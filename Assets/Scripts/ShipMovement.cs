@@ -9,6 +9,8 @@ public class ShipMovement : MonoBehaviour
     [SerializeField] private float movementSpeed = 4f;
     [SerializeField] private float rotationSpeed = 1f;
     public Vector2 _movement;
+    [HideInInspector]
+    public float shipVelocity;
 
     [SerializeField] private GameObject _projectile;
     [SerializeField] private float projectileSpeed;
@@ -22,11 +24,12 @@ public class ShipMovement : MonoBehaviour
         InvokeRepeating("Shoot", 3f, 0.5f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _movement.y = Input.GetAxis("Vertical");
         _movement.x = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) AddForce(_movement.y);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) AddForce(_movement.y * movementSpeed);
+        shipVelocity = _movement.y * movementSpeed;
         Rotate(transform, _movement.x * -rotationSpeed);
     }
 

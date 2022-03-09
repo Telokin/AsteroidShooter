@@ -6,13 +6,26 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed;
+    [SerializeField] private ShipMovement shipMovement;
+    private Rigidbody2D rb2D;
 
     public int scoreValue;
     // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        transform.Translate(new Vector3(0, projectileSpeed * Time.deltaTime, 0));
+        rb2D = GetComponent<Rigidbody2D>();
+    }
+    void FixedUpdate()
+    {
+        AddForce(projectileSpeed + shipMovement.shipVelocity);
         Destroy(this.gameObject, 3);
+    }
+
+    private void AddForce(float amount)
+    {
+        Vector2 force = transform.up * amount;
+        rb2D.AddForce(force);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

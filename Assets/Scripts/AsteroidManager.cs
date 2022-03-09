@@ -14,17 +14,16 @@ public class AsteroidManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         this.gameObject.SetActive(false);
-        collision.gameObject.SetActive(false);
+        //collision.gameObject.SetActive(false);
+        //StartCoroutine(RespawnAsteroid());
     }
 
-    private void RespawnAsteroid()
+    private IEnumerator RespawnAsteroid()
     {
-        if(this.gameObject.activeSelf == false)
-        {
-            this.gameObject.SetActive(true);
-            transform.position = startPosition;
-        }
+        yield return new WaitForSeconds(1);
+        this.gameObject.SetActive(true);
+        transform.position = startPosition;
     }
-
+    
 
 }

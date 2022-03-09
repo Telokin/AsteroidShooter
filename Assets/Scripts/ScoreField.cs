@@ -7,5 +7,7 @@ public class ScoreField : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _score;
 
-    private Projectile _projectile;
+    [SerializeField] private Projectile _projectile;
+
+
 }
