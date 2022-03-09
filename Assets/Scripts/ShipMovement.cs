@@ -19,7 +19,7 @@ public class ShipMovement : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        InvokeRepeating("Shoot", 3f, 3f);
+        InvokeRepeating("Shoot", 3f, 0.5f);
     }
 
     void Update()
