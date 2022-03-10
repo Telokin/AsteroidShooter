@@ -6,15 +6,11 @@ public class ShipMovement : MonoBehaviour
 {
 
     private Rigidbody2D rb2D;
-    [SerializeField] private float movementSpeed = 4f;
-    [SerializeField] private float rotationSpeed = 1f;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float rotationSpeed;
     public Vector2 _movement;
-    [HideInInspector]
-    public float shipVelocity;
 
     [SerializeField] private GameObject _projectile;
-    [SerializeField] private float projectileSpeed;
-    private Vector2 _projectileCords;
     private GameObject clone;
 
 
@@ -26,10 +22,8 @@ public class ShipMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        _movement.y = Input.GetAxis("Vertical");
         _movement.x = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) AddForce(_movement.y * movementSpeed);
-        shipVelocity = _movement.y * movementSpeed;
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) AddForce(movementSpeed);
         Rotate(transform, _movement.x * -rotationSpeed);
     }
 
@@ -47,7 +41,7 @@ public class ShipMovement : MonoBehaviour
 
     private void Shoot()
     {
-        _projectileCords = new Vector2(transform.position.x, transform.position.y);
-        clone = Instantiate(_projectile, _projectileCords, transform.rotation);       
+        _projectile.transform.position = new Vector2(transform.position.x, transform.position.y);
+        clone = Instantiate(_projectile, _projectile.transform.position, transform.rotation);       
     }
 }

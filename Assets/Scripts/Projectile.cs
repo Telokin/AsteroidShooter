@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     }
     void FixedUpdate()
     {
-        AddForce(projectileSpeed + shipMovement.shipVelocity);
+        AddForce(projectileSpeed);
         Destroy(this.gameObject, 3);
     }
 
@@ -26,10 +26,5 @@ public class Projectile : MonoBehaviour
     {
         Vector2 force = transform.up * amount;
         rb2D.AddForce(force);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        scoreValue++;
     }
 }
