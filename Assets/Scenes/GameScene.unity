@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 827501579}
   - component: {fileID: 827501581}
   - component: {fileID: 827501580}
+  - component: {fileID: 827501582}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -1613,6 +1614,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &827501582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827501578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc452afb0d7e3c40b8d5023a4e6a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Asteroid(smallGrid)
+    prefab: {fileID: 2366434950812763382, guid: e5ce3a95c5fb55e4c90e77e6be31904a, type: 3}
+    size: 25600
 --- !u!1001 &861141720
 PrefabInstance:
   m_ObjectHideFlags: 0

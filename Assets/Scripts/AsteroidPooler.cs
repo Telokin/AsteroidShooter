@@ -6,7 +6,7 @@ public class AsteroidPooler : MonoBehaviour
 {
 
     [System.Serializable]
-    public class Pool
+    private class Pool
     {
         public string tag;
         public GameObject prefab;
@@ -20,8 +20,8 @@ public class AsteroidPooler : MonoBehaviour
         Instance = this;
     }
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDict;
+    [SerializeField] private List<Pool> pools;
+    [SerializeField] private Dictionary<string, Queue<GameObject>> poolDict;
     void Start()
     {
         poolDict = new Dictionary<string, Queue<GameObject>>();
@@ -52,7 +52,7 @@ public class AsteroidPooler : MonoBehaviour
         IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
         if(pooledObj != null)
         {
-            pooledObj.OnObjectSpawn();
+            pooledObj.OnAsteroidSpawn();
         }
         poolDict[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
